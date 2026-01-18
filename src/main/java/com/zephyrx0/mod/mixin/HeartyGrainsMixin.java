@@ -3,9 +3,9 @@ package com.zephyrx0.mod.mixin;
 import com.cobblemon.mod.common.block.HeartyGrainsBlock;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.BlockView;
+import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registries;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,19 +17,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class HeartyGrainsMixin {
 
     @Inject(
-            method = "canSurvive",
+            method = "canPlantOnTop",
             at = @At("HEAD"),
             cancellable = true,
             require = 0
     )
     private void allowRichSoilFarmland(
-            BlockState state,
-            WorldView world,
+            BlockState floor,
+            BlockView world,
             BlockPos pos,
             CallbackInfoReturnable<Boolean> cir
     ) {
-        BlockState below = world.getBlockState(pos.down());
-        Identifier id = Registries.BLOCK.getId(below.getBlock());
+        Identifier id = Registries.BLOCK.getId(floor.getBlock());
 
         if (id != null && id.equals(
                 new Identifier("farmersdelight", "rich_soil_farmland")
