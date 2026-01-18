@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.zephyrx0.mod.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+      "HeartyGrainsMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
