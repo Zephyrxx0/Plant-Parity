@@ -14,5 +14,5 @@ A Minecraft mod for **Fabric** that provides compatibility between **Cobblemon**
 - **Farmer's Delight**: Required
 
 ## License
-
+s
 This project is licensed under the [CC0-1.0 License](LICENSE).
